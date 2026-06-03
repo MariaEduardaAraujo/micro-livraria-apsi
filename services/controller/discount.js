@@ -9,7 +9,8 @@ const packageDefinition = protoLoader.loadSync(
     arrays: true,
 });
 
+const host = process.env.DISCOUNT_HOST || '127.0.0.1';
 const DiscountService = grpc.loadPackageDefinition(packageDefinition).DiscountService;
-const client = new DiscountService('127.0.0.1:3003', grpc.credentials.createInsecure());
+const client = new DiscountService(`${host}:3003`, grpc.credentials.createInsecure());
 
 module.exports = client;
