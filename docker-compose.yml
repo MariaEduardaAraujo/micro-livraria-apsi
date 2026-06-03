@@ -1,0 +1,49 @@
+version: '3'
+services:
+  frontend:
+    image: meas16/frontend
+    build:
+      context: .
+      dockerfile: frontend.Dockerfile
+    ports:
+      - "5000:5000"
+
+  controller:
+    image: meas16/controller
+    build:
+      context: .
+      dockerfile: controller.Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - shipping
+      - inventory
+      - discount
+    environment:
+      - INVENTORY_HOST=inventory
+      - SHIPPING_HOST=shipping
+      - DISCOUNT_HOST=discount
+
+  shipping:
+    image: meas16/shipping
+    build:
+      context: .
+      dockerfile: shipping.Dockerfile
+    ports:
+      - "3001:3001"
+
+  inventory:
+    image: meas16/inventory
+    build:
+      context: .
+      dockerfile: inventory.Dockerfile
+    ports:
+      - "3002:3002"
+
+  discount:
+    image: meas16/discount
+    build:
+      context: .
+      dockerfile: discount.Dockerfile
+    ports:
+      - "3003:3003"
