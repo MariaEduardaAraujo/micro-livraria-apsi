@@ -44,7 +44,7 @@ function calculateShipping(id, cep) {
             throw data.statusText;
         })
         .then((data) => {
-            swal('Frete', `O frete é: R$${data.value.toFixed(2)}`, 'success');
+            swal('Frete', `Frete: R$${data.shipping.toFixed(2)}\n Desconto: R$${data.discount.toFixed(2)}\n Total: R$${data.total.toFixed(2)}`, 'success');
         })
         .catch((err) => {
             swal('Erro', 'Erro ao consultar frete', 'error');
