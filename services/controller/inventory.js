@@ -9,7 +9,8 @@ const packageDefinition = protoLoader.loadSync(
     arrays: true,
 });
 
+const host = process.env.INVENTORY_HOST || '127.0.0.1';
 const InventoryService = grpc.loadPackageDefinition(packageDefinition).InventoryService;
-const client = new InventoryService('127.0.0.1:3002', grpc.credentials.createInsecure());
+const client = new InventoryService(`${host}:3002`, grpc.credentials.createInsecure());
 
 module.exports = client;
