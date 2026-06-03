@@ -4,15 +4,17 @@
     "description": "Toy example of microservice",
     "main": "",
     "scripts": {
-        "start": "run-p start-frontend start-controller start-shipping start-inventory",
+        "start": "run-p start-frontend start-controller start-shipping start-inventory start-discount",
         "start-controller": "nodemon services/controller/index.js",
         "start-shipping": "nodemon services/shipping/index.js",
         "start-inventory": "nodemon services/inventory/index.js",
+        "start-discount": "nodemon services/discount/index.js",
         "start-frontend": "serve -p 5000 services/frontend",
         "exec": "run-p start-frontend exec-controller exec-shipping exec-inventory",
         "exec-controller": "node services/controller/index.js",
         "exec-shipping": "node services/shipping/index.js",
-        "exec-inventory": "node services/inventory/index.js"
+        "exec-inventory": "node services/inventory/index.js",
+        "exec-discount": "node services/discount/index.js"
     },
     "repository": {
         "type": "git",
@@ -28,12 +30,12 @@
         "@grpc/grpc-js": "^1.5.2",
         "@grpc/proto-loader": "^0.6.9",
         "cors": "^2.8.5",
-        "express": "^4.17.1",
+        "express": "^4.22.2",
         "google-protobuf": "^3.19.3"
     },
     "devDependencies": {
-        "serve": "^13.0.2",
         "nodemon": "^2.0.7",
-        "npm-run-all": "^4.1.5"
+        "npm-run-all": "^4.1.5",
+        "serve": "^13.0.2"
     }
 }
