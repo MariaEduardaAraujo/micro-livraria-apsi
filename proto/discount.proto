@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+service DiscountService {
+    rpc GetDiscountRate(DiscountPayload) returns (DiscountResponse) {}
+}
+
+message DiscountPayload {
+}
+
+message DiscountResponse {
+    float value = 1;
+}
